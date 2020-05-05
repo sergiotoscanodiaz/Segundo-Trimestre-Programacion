@@ -9,7 +9,7 @@ public class GestionComercioSA {
 		Scanner s;
     s = new Scanner(System.in);
 		Menu menu = new Menu(s, System.out);
-		menu.ejecutar();
+		menu.empezar();
 	}
 
 }
