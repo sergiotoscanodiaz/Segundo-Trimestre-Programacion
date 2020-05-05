@@ -21,11 +21,11 @@ public class Menu {
 	// funcion para imprimir la lista de comandos
 	public void comandos() {
 		System.out.println("Menú principal, ¿Qué desea hacer?:");
-		System.out.println("listar (comercial/cliente) - Lista los comerciales o los clientes");
-		System.out.println("alta (comercial/cliente) - Crea un nuevo comercial o un cliente");
-		System.out.println("borrar (comercial/cliente) - Borra un comercial o un cliente de la lista");
-		System.out.println("modifica (comercial/cliente) - Modifica los atributos de un comercial o un cliente");
-		System.out.println("compra [correo comercial] [nombre producto] [cantidad] - Compra el producto al comercial a través de su correo ");
+		System.out.println("listar (comercial o cliente)");
+		System.out.println("alta (comercial o cliente)");
+		System.out.println("borrar (comercial o cliente)");
+		System.out.println("modifica (comercial o cliente)");
+		System.out.println("compra");
 		System.out.println("salir - Sale del programa");
 	}
 	
@@ -34,7 +34,7 @@ public class Menu {
 		this.salida = salida;
 	}
 	
-	// Llama a la funcion scanLine para separar comandos
+	// Funcion scanLine para separar comandos
 	private String[] scan(String prompt) {
 		return scanLine(prompt).split(" ");
 	}
@@ -74,11 +74,7 @@ public class Menu {
 			String correoCliente = scanLine("Correo del cliente: ");
 			String tlfCliente = scanLine("Telefono del cliente: ");
 			catalogoUsuario.put(new Usuario(nombreCliente, correoCliente, tlfCliente));
-		} else if (comando.length == 5) {
-			// Modo automatico
-			catalogoUsuario.put(new Usuario(comando[2].replaceAll("_", " "), comando[3], comando[4].replaceAll("_", "-")));
 		}
-		
 	}
 
 	// funcion alta comercial
@@ -89,9 +85,6 @@ public class Menu {
 			String correoComercial = scanLine("Correo del comercial: ");
 			String puestoComercial = scanLine("Puesto del comercial: ");
 			catalogoComercial.put(new Comercial(nombreComercial, correoComercial, puestoComercial));
-		} else if (comando.length == 5) {
-			// Modo automatico
-			catalogoComercial.put(new Comercial(comando[2].replaceAll("_", " "), comando[3], comando[4]));
 		}
 	}
 	
@@ -139,12 +132,9 @@ public class Menu {
 	// Borra el cliente
 	private void borrarCliente(String[] comando) {
 		if (comando.length == 2) {
-			// Modo interactivo
+			
 			String correoCliente = scanLine("Correo del cliente: ");
 			catalogoUsuario.del(correoCliente);
-		} else if (comando.length == 3) {
-			// Modo automatico
-			catalogoUsuario.del(comando[2]);
 		}
 		
 	}
@@ -152,13 +142,10 @@ public class Menu {
 	// Borra el comercial
 	private void borrarComercial(String[] comando) {
 		if (comando.length == 2) {
-			// Modo interactivo
+
 			String correoComercial = scanLine("Correo del comercial: ");
 			catalogoComercial.del(correoComercial);
-		} else if (comando.length == 3) {
-			// Modo automatico
-			catalogoComercial.del(comando[2]);
-		}
+		} 
 	}
 
 	// funcion de modificación
@@ -202,7 +189,7 @@ public class Menu {
 				break;
 			}
 		} else if (comando.length == 5) {
-			// Modo automatico
+
 			Usuario usuario = catalogoUsuario.get(comando[2]);
 			if (usuario == null) {
 				return;
@@ -226,7 +213,7 @@ public class Menu {
 		
 	}
 
-	// funcion moficiacion comercial
+	// funcion modificacion comercial
 	private void modificarComercial(String[] comando) {
 		if (comando.length == 2) {
 
@@ -256,6 +243,7 @@ public class Menu {
 		}
 	}
 	
+  //función compra
  	private void compra(String[] comando) {
  		if (comando.length < 1) {
  			return;
