@@ -15,7 +15,7 @@ public class Menu {
     listaCliente.put(new Usuario("Sergio", "sergio@github.com", "606-785-421"));
     listaComercial.put(new Comercial("Alfredo", "alfredo@gmail.com", "comercial de ropa"));
     listaComercial.put(new Comercial("Ana", "ana@outlook.com", "comercial de papelería"));
-    listaComercial.put(new Comercial("Francisco", "isco@hotmail.es", "comercial de bazar"));
+    listaComercial.put(new Comercial("Fran", "isco@hotmail.es", "comercial de bazar"));
     listaComercial.put(new Comercial("Mari", "mari@gmail.com", "comercial de informática"));
   }
 
